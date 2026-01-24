@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libraries - Boichokro</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>📚 Boichokro</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html">Browse Books</a></li>
+                <li><a href="libraries.html" class="active">Libraries</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li id="authLinks">
+                    <a href="login.html">Login</a>
+                </li>
+                <li id="userLinks" style="display: none;">
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="books-page">
+        <div class="container">
+            <div class="page-header">
+                <h2>Libraries</h2>
+                <a href="register-library.html" class="btn btn-primary" id="registerLibraryBtn" style="display: none;">Register Library</a>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <select id="filterArea">
+                        <option value="">All Areas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="filterType">
+                        <option value="">All Types</option>
+                        <option value="public">Public</option>
+                        <option value="university">University</option>
+                    </select>
+                </div>
+                <button class="btn btn-secondary" onclick="applyFilters()">Apply Filters</button>
+            </div>
+
+            <div id="librariesList">
+                <!-- Libraries will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadLibraries();
+        });
+
+        async function loadLibraries() {
+            try {
+                const area = document.getElementById('filterArea').value;
+                const type = document.getElementById('filterType').value;
+                
+                const params = new URLSearchParams({ action: 'list' });
+                if (area) params.append('area', area);
+                if (type) params.append('library_type', type);
+                
+                const response = await API.getJSON(`api/libraries.php?${params}`);
+                
+                if (response.success) {
+                    displayLibraries(response.libraries || []);
+                }
+            } catch (error) {
+                console.error('Error loading libraries:', error);
+            }
+        }
+
+        function displayLibraries(libraries) {
+            const container = document.getElementById('librariesList');
+            if (!container) return;
+            
+            if (libraries.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 2rem;">No libraries found.</p>';
+                return;
+            }
+            
+            container.innerHTML = libraries.map(lib => `
+                <div class="post-card" onclick="window.location.href='library-detail.html?id=${lib.id}'">
+                    <div class="post-header">
+                        <div>
+                            <div class="post-title">${lib.library_name}</div>
+                            <div class="post-meta">${lib.library_type} Library | ${lib.area}, ${lib.city}</div>
+                        </div>
+                        <span class="book-badge badge-${lib.library_type}">${lib.library_type}</span>
+                    </div>
+                    <div class="post-content">
+                        ${lib.description || 'No description available.'}
+                        <br><br>
+                        <strong>Contact:</strong> ${lib.contact_email || 'N/A'} | ${lib.contact_phone || 'N/A'}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function applyFilters() {
+            loadLibraries();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - Boichokro</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>📚 Boichokro</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html">Browse Books</a></li>
+                <li><a href="libraries.html">Libraries</a></li>
+                <li><a href="community.html" class="active">Community</a></li>
+                <li id="authLinks">
+                    <a href="login.html">Login</a>
+                </li>
+                <li id="userLinks" style="display: none;">
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="community-page">
+        <div class="container">
+            <div class="page-header">
+                <h2>Community Discussions</h2>
+                <button class="btn btn-primary" id="createPostBtn" style="display: none;">Create Post</button>
+            </div>
+
+            <div class="community-filters">
+                <button class="filter-btn active" data-type="">All Posts</button>
+                <button class="filter-btn" data-type="review">Reviews</button>
+                <button class="filter-btn" data-type="recommendation">Recommendations</button>
+                <button class="filter-btn" data-type="request">Requests</button>
+            </div>
+
+            <div id="communityPosts">
+                <!-- Posts will be loaded here -->
+            </div>
+
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </main>
+
+    <!-- Create Post Modal -->
+    <div id="createPostModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create Post</h2>
+            <form id="createPostForm">
+                <div class="form-group">
+                    <label for="post_type">Post Type *</label>
+                    <select id="post_type" name="post_type" required>
+                        <option value="">Select Type</option>
+                        <option value="review">Review</option>
+                        <option value="recommendation">Recommendation</option>
+                        <option value="request">Request</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="post_title">Title *</label>
+                    <input type="text" id="post_title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="post_content">Content *</label>
+                    <textarea id="post_content" name="content" rows="5" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="book_title">Book Title</label>
+                        <input type="text" id="book_title" name="book_title">
+                    </div>
+                    <div class="form-group">
+                        <label for="book_author">Book Author</label>
+                        <input type="text" id="book_author" name="book_author">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="priority_tag">Priority Tag</label>
+                    <input type="text" id="priority_tag" name="priority_tag" placeholder="e.g., NeedBook">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Post</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/community.js"></script>
+</body>
+</html>
