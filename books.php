@@ -30,25 +30,25 @@ $result = $conn->query($sql);
 $categoriesRes = $conn->query("SELECT DISTINCT category FROM books WHERE category IS NOT NULL AND category != '' ORDER BY category ASC");
 ?>
 
-<div class="bg-emerald-50 py-5">
+<div class="py-4" style="background-color: var(--bg-cream);">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold text-dark mb-1">Browse Books</h1>
+                <h1 class="fw-bold mb-1" style="font-family: var(--font-serif); color: var(--text-dark);">Browse Books</h1>
                 <p class="text-muted mb-0">Discover your next great read from our community.</p>
             </div>
             <?php if(isset($_SESSION['user_id']) && $_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'library'): ?>
-                <a href="add_book.php" class="btn btn-primary rounded-pill px-4 shadow-sm"><i class="bi bi-plus-lg me-2"></i>Post a Book</a>
+                <a href="add_book.php" class="btn rounded-pill px-4 shadow-sm" style="background-color: var(--primary-green); color: white; border: none;"><i class="bi bi-plus-lg me-2"></i>Post a Book</a>
             <?php endif; ?>
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4 mb-5">
+        <div class="card border-0 shadow-sm rounded-4 mb-4" style="border: 1px solid var(--border-soft) !important; background-color: var(--bg-white);">
             <div class="card-body p-3">
                 <form action="books.php" method="GET" class="row g-2 align-items-center">
                     <div class="col-md-3">
                         <div class="input-group">
-                            <span class="input-group-text bg-white border-end-0 rounded-start-pill ps-3"><i class="bi bi-grid text-primary"></i></span>
-                            <select name="category" class="form-select border-start-0 rounded-end-pill px-3">
+                            <span class="input-group-text bg-white border-end-0 rounded-start-pill ps-3" style="border-color: var(--border-soft);"><i class="bi bi-grid" style="color: var(--primary-green);"></i></span>
+                            <select name="category" class="form-select border-start-0 rounded-end-pill px-3" style="border-color: var(--border-soft);">
                                 <option value="all" <?php echo $category == 'all' ? 'selected' : ''; ?>>All Categories</option>
                                 <?php while($cat = $categoriesRes->fetch_assoc()): ?>
                                     <option value="<?php echo htmlspecialchars($cat['category']); ?>" <?php echo $category == $cat['category'] ? 'selected' : ''; ?>>
@@ -60,14 +60,14 @@ $categoriesRes = $conn->query("SELECT DISTINCT category FROM books WHERE categor
                     </div>
                     <div class="col-md-4">
                         <div class="input-group">
-                            <span class="input-group-text bg-white border-end-0 rounded-start-pill ps-3"><i class="bi bi-geo-alt text-danger"></i></span>
-                            <input type="text" name="location" class="form-control border-start-0 rounded-end-pill px-3" placeholder="Search by City or Area..." value="<?php echo htmlspecialchars($location); ?>">
+                            <span class="input-group-text bg-white border-end-0 rounded-start-pill ps-3" style="border-color: var(--border-soft);"><i class="bi bi-geo-alt" style="color: var(--secondary-beige);"></i></span>
+                            <input type="text" name="location" class="form-control border-start-0 rounded-end-pill px-3" placeholder="Search by City or Area..." value="<?php echo htmlspecialchars($location); ?>" style="border-color: var(--border-soft);">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group">
-                            <span class="input-group-text bg-white border-end-0 rounded-start-pill ps-3"><i class="bi bi-tag text-success"></i></span>
-                            <select name="type" class="form-select border-start-0 rounded-end-pill px-3">
+                            <span class="input-group-text bg-white border-end-0 rounded-start-pill ps-3" style="border-color: var(--border-soft);"><i class="bi bi-tag" style="color: var(--primary-green);"></i></span>
+                            <select name="type" class="form-select border-start-0 rounded-end-pill px-3" style="border-color: var(--border-soft);">
                                 <option value="all" <?php echo $type == 'all' ? 'selected' : ''; ?>>All Types</option>
                                 <option value="sale" <?php echo $type == 'sale' ? 'selected' : ''; ?>>Buy/Sell</option>
                                 <option value="swap" <?php echo $type == 'swap' ? 'selected' : ''; ?>>Swap Only</option>
@@ -76,7 +76,7 @@ $categoriesRes = $conn->query("SELECT DISTINCT category FROM books WHERE categor
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button type="submit" class="btn btn-primary w-100 rounded-pill py-2">
+                        <button type="submit" class="btn w-100 rounded-pill py-2" style="background-color: var(--primary-green); color: white; border: none;">
                             <i class="bi bi-search me-2"></i>Search
                         </button>
                     </div>
@@ -93,20 +93,20 @@ $categoriesRes = $conn->query("SELECT DISTINCT category FROM books WHERE categor
                                 <img src="<?php echo htmlspecialchars($row['images'] ?: 'https://via.placeholder.com/300x400?text=No+Image'); ?>" class="card-img-top object-fit-cover" alt="<?php echo htmlspecialchars($row['title']); ?>" style="height: 300px;">
                                 <div class="position-absolute top-0 end-0 p-2">
                                     <?php if($row['listing_type'] == 'swap'): ?>
-                                        <span class="badge bg-info text-white shadow-sm rounded-pill px-3 py-2 fw-bold" title="<?php echo htmlspecialchars($row['swap_interest']); ?>">
+                                        <span class="badge shadow-sm rounded-pill px-3 py-2 fw-bold" style="background: var(--primary-green); color: white;" title="<?php echo htmlspecialchars($row['swap_interest']); ?>">
                                             <i class="bi bi-arrow-left-right me-1"></i>Swap
                                         </span>
                                     <?php elseif($row['listing_type'] == 'donation'): ?>
-                                        <span class="badge bg-success text-white shadow-sm rounded-pill px-3 py-2 fw-bold">Free</span>
+                                        <span class="badge shadow-sm rounded-pill px-3 py-2 fw-bold" style="background: var(--primary-green); color: white;">Free</span>
                                     <?php else: ?>
-                                        <span class="badge bg-white text-dark shadow-sm rounded-pill px-3 py-2 fw-bold">৳<?php echo htmlspecialchars($row['price']); ?></span>
+                                        <span class="badge bg-white shadow-sm rounded-pill px-3 py-2 fw-bold" style="color: var(--primary-green); border: 1px solid var(--primary-green);">৳<?php echo htmlspecialchars($row['price']); ?></span>
                                     <?php endif; ?>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title fw-bold text-truncate mb-1"><?php echo htmlspecialchars($row['title']); ?></h5>
                                 <p class="card-text text-muted small mb-3"><?php echo htmlspecialchars($row['author']); ?></p>
-                                <button class="btn btn-primary w-100 rounded-pill btn-sm" 
+                                <button class="btn w-100 rounded-pill btn-sm" style="background-color: var(--primary-green); color: white; border: none;" 
                                         data-bs-toggle="offcanvas" 
                                         data-bs-target="#bookDetailsOffcanvas"
                                         data-title="<?php echo htmlspecialchars($row['title']); ?>"
@@ -140,61 +140,61 @@ $categoriesRes = $conn->query("SELECT DISTINCT category FROM books WHERE categor
     </div>
 </div>
 
-<div class="offcanvas offcanvas-end rounded-start-4 border-0 shadow-lg" tabindex="-1" id="bookDetailsOffcanvas" aria-labelledby="bookDetailsLabel" style="width: 400px;">
-    <div class="offcanvas-header border-bottom">
-        <h5 class="offcanvas-title fw-bold" id="bookDetailsLabel">Book Details</h5>
+<div class="offcanvas offcanvas-end rounded-start-4 border-0 shadow-lg" tabindex="-1" id="bookDetailsOffcanvas" aria-labelledby="bookDetailsLabel" style="width: 400px; border-left: 3px solid var(--primary-color) !important;">
+    <div class="offcanvas-header border-bottom" style="background: var(--primary-light);">
+        <h5 class="offcanvas-title fw-bold text-eco-dark" id="bookDetailsLabel">Book Details</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-0">
         <img id="offcanvasImage" src="" class="w-100 object-fit-cover" style="height: 300px;" alt="Book Cover">
         <div class="p-4">
-            <h3 class="fw-bold mb-1" id="offcanvasTitle"></h3>
-            <p class="text-muted mb-3" id="offcanvasAuthor"></p>
+            <h3 class="fw-bold mb-1 text-eco-dark" id="offcanvasTitle"></h3>
+            <p class="text-eco-muted mb-3" id="offcanvasAuthor"></p>
             
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <div id="priceDisplay">
-                    <span class="display-6 fw-bold text-primary" id="offcanvasPriceContainer">
+                    <span class="display-6 fw-bold" style="color: var(--primary-color);" id="offcanvasPriceContainer">
                         ৳<span id="offcanvasPrice"></span>
                     </span>
                     <div id="offcanvasSwap" class="d-none">
-                        <small class="text-muted d-block text-uppercase fw-bold" style="font-size: 0.8rem;">Wants to Swap For:</small>
-                        <span class="fs-4 fw-bold text-primary" id="offcanvasSwapText"></span>
+                        <small class="text-eco-muted d-block text-uppercase fw-bold" style="font-size: 0.8rem;">Wants to Swap For:</small>
+                        <span class="fs-4 fw-bold" style="color: var(--primary-color);" id="offcanvasSwapText"></span>
                     </div>
                 </div>
-                <span class="badge bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-pill px-3 py-2" id="offcanvasType"></span>
+                <span class="eco-badge" id="offcanvasType"></span>
             </div>
 
             <div class="row g-3 mb-4">
                 <div class="col-6">
-                    <div class="p-3 bg-light rounded-3 text-center">
-                        <i class="bi bi-geo-alt text-primary mb-2 fs-5"></i>
-                        <div class="small fw-bold">Location</div>
-                        <div class="small text-muted" id="offcanvasLocation"></div>
+                    <div class="p-3 rounded-3 text-center" style="background: var(--primary-light);">
+                        <i class="bi bi-geo-alt mb-2 fs-5" style="color: var(--primary-color);"></i>
+                        <div class="small fw-bold text-eco-dark">Location</div>
+                        <div class="small text-eco-muted" id="offcanvasLocation"></div>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="p-3 bg-light rounded-3 text-center">
-                        <i class="bi bi-stars text-warning mb-2 fs-5"></i>
-                        <div class="small fw-bold">Condition</div>
-                        <div class="small text-muted" id="offcanvasCondition"></div>
+                    <div class="p-3 rounded-3 text-center" style="background: var(--secondary-light);">
+                        <i class="bi bi-stars mb-2 fs-5" style="color: var(--secondary-color);"></i>
+                        <div class="small fw-bold text-eco-dark">Condition</div>
+                        <div class="small text-eco-muted" id="offcanvasCondition"></div>
                     </div>
                 </div>
             </div>
 
-            <h6 class="fw-bold mb-2">Description</h6>
+            <h6 class="fw-bold mb-2 text-eco-dark">Description</h6>
             <p class="text-secondary small mb-4" id="offcanvasDescription"></p>
 
             <div class="d-grid gap-2">
                 <div id="sellerContactInfo" class="d-none animate__animated animate__fadeIn">
-                    <div class="card border-primary bg-primary bg-opacity-10 rounded-4 mb-3">
+                    <div class="card rounded-4 mb-3" style="border: 2px solid var(--primary-color); background: var(--primary-light);">
                         <div class="card-body p-3 text-center">
-                            <span class="text-muted small d-block mb-1">Seller's Contact Number</span>
-                            <h4 class="fw-bold text-primary mb-3" id="displayPhoneNumber"></h4>
+                            <span class="text-eco-muted small d-block mb-1">Seller's Contact Number</span>
+                            <h4 class="fw-bold mb-3" style="color: var(--primary-color);" id="displayPhoneNumber"></h4>
                             <div class="d-flex gap-2">
-                                <a href="" id="callBtn" class="btn btn-primary rounded-pill flex-grow-1">
+                                <a href="" id="callBtn" class="btn btn-eco-primary rounded-pill flex-grow-1">
                                     <i class="bi bi-telephone-fill me-2"></i>Call
                                 </a>
-                                <a href="" id="whatsappBtn" target="_blank" class="btn btn-success rounded-pill flex-grow-1">
+                                <a href="" id="whatsappBtn" target="_blank" class="btn btn-eco-secondary rounded-pill flex-grow-1">
                                     <i class="bi bi-whatsapp me-2"></i>WhatsApp
                                 </a>
                             </div>
@@ -202,13 +202,13 @@ $categoriesRes = $conn->query("SELECT DISTINCT category FROM books WHERE categor
                     </div>
                 </div>
                 
-                <button id="contactSellerBtn" class="btn btn-primary rounded-pill py-2" onclick="revealSellerContact()">
+                <button id="contactSellerBtn" class="btn btn-eco-primary rounded-pill py-2" onclick="revealSellerContact()">
                     <i class="bi bi-person-badge me-2"></i>Contact Seller
                 </button>
-                <button id="swapInterestBtn" class="btn btn-success rounded-pill py-2 d-none" data-bs-toggle="modal" data-bs-target="#swapInterestModal">
+                <button id="swapInterestBtn" class="btn btn-eco-secondary rounded-pill py-2 d-none" data-bs-toggle="modal" data-bs-target="#swapInterestModal">
                     <i class="bi bi-arrow-left-right me-2"></i>Are You Interested?
                 </button>
-                <button class="btn btn-outline-secondary rounded-pill py-2" onclick="addToWishlist()">
+                <button class="btn btn-eco-outline rounded-pill py-2" onclick="addToWishlist()">
                     <i class="bi bi-heart me-2"></i>Add to Wishlist
                 </button>
             </div>

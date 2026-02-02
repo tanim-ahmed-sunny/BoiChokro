@@ -71,7 +71,6 @@ $error = isset($_GET['error']) ? $_GET['error'] : '';
                                 <select name="listing_type" class="form-select bg-light border-0" id="listingType">
                                     <option value="sale">For Sale</option>
                                     <option value="swap">Swap / Exchange</option>
-                                    <option value="donation">Donation (Free)</option>
                                 </select>
                             </div>
 

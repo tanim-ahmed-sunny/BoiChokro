@@ -99,7 +99,7 @@ if (isset($_SESSION['user_id'])) {
                             <div id="thread-<?php echo (int)$row['id']; ?>" class="community-card shadow-sm fadeIn rounded-4 pb-0 mb-4">
                                 <div class="px-4 pt-4">
                                     <div class="d-flex align-items-center gap-2 mb-3">
-                                        <div class="bg-emerald-50 text-emerald-600 rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                                        <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; background-color: var(--primary-light); color: var(--text-dark);">
                                             <i class="bi bi-person-fill"></i>
                                         </div>
                                         <div>
@@ -117,9 +117,11 @@ if (isset($_SESSION['user_id'])) {
                                         </p>
                                     </a>
 
-                                    <?php if(!empty($row['image_url'])): ?>
+                                    <?php if(!empty($row['image_url'])): 
+                                        $thread_img = resolve_image_path($row['image_url']);
+                                    ?>
                                         <div class="rounded-4 overflow-hidden mb-3 shadow-sm" style="max-height: 400px;">
-                                            <img src="<?php echo htmlspecialchars($row['image_url']); ?>" class="w-100 h-100 object-fit-cover" alt="Discussion">
+                                            <img src="<?php echo htmlspecialchars($thread_img); ?>" class="w-100 h-100 object-fit-cover" alt="Discussion">
                                         </div>
                                     <?php endif; ?>
                                 </div>
@@ -166,7 +168,7 @@ if (isset($_SESSION['user_id'])) {
                                             <input type="hidden" name="action" value="post_comment">
                                             <input type="hidden" name="thread_id" value="<?php echo (int)$row['id']; ?>">
                                             <input type="hidden" name="redirect_to" value="community.php#thread-<?php echo (int)$row['id']; ?>">
-                                            <div class="bg-emerald-50 text-emerald-600 rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px;">
+                                            <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px; background-color: var(--primary-light); color: var(--text-dark);">
                                                 <i class="bi bi-person-fill small"></i>
                                             </div>
                                             <div class="flex-grow-1 position-relative">
