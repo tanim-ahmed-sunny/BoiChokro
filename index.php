@@ -12,38 +12,70 @@ $libraryCount = $conn->query("SELECT COUNT(*) as count FROM libraries WHERE stat
 ?>
 
 <!-- Hero Section -->
-<section class="hero-section text-center">
-    <div class="container position-relative z-1">
-        <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">Welcome to <span class="text-primary">Boichokro</span></h1>
-        <p class="lead mb-5 animate__animated animate__fadeInUp">The ultimate community for book lovers to swap, share, and discover new reads.</p>
-        <div class="d-flex justify-content-center gap-3 animate__animated animate__fadeInUp animate__delay-1s">
-            <a href="books.php" class="btn btn-primary rounded-pill px-5 py-3 fs-5 shadow-lg">Browse Books</a>
-            <a href="community.php" class="btn btn-outline-light rounded-pill px-5 py-3 fs-5">Join Community</a>
+<section class="py-5" style="background-color: var(--bg-cream);">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-3" style="font-family: var(--font-serif); color: var(--text-dark);">
+                    Read. Reuse. <span style="color: var(--text-dark);">Reduce Waste.</span>
+                </h1>
+                <p class="lead mb-4" style="color: var(--text-muted); font-size: 1.1rem;">
+                    Buy, swap, or donate used books —<br>
+                    <em style="font-style: italic;">and give knowledge a second life.</em>
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="books.php?type=sale" class="btn px-4 py-3 rounded-pill fw-semibold" style="background-color: var(--primary-green); color: white; border: none;">
+                        Buy Used Books
+                    </a>
+                    <a href="books.php?type=swap" class="btn px-4 py-3 rounded-pill fw-semibold" style="background-color: var(--primary-green); color: white; border: none;">
+                        Swap a Book
+                    </a>
+                    <a href="donate.php" class="btn px-4 py-3 rounded-pill fw-semibold" style="background-color: var(--secondary-beige); color: white; border: none;">
+                        Donate Books
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="images/hero-illustration.png" alt="People exchanging books" class="img-fluid" style="max-width: 500px;">
+            </div>
         </div>
     </div>
-    <div class="prompt-decoration"></div>
 </section>
 
-<!-- Stats Section -->
-<section class="py-5 bg-white border-bottom">
+<!-- Environmental Impact Section -->
+<section class="py-5" style="background-color: var(--bg-cream);">
     <div class="container">
-        <div class="row g-4 text-center">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-2" style="font-family: var(--font-serif); color: var(--text-dark); font-size: 2rem;">
+                Our Environmental Impact
+            </h2>
+        </div>
+        <div class="row g-4">
             <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-number"><?php echo $bookCount; ?>+</div>
-                    <div class="stat-label">Books Available</div>
+                <div class="card border-0 shadow-sm text-center p-4" style="background-color: var(--bg-white); border-radius: 1.5rem;">
+                    <div class="mb-3">
+                        <img src="images/books-saved.png" alt="Books Saved" style="width: 120px; height: 120px; object-fit: contain;">
+                    </div>
+                    <h5 class="fw-bold mb-2" style="font-family: var(--font-serif); color: var(--text-dark);">Books Saved</h5>
+                    <p class="text-muted small mb-0">Every reused book saves paper, water, and energy.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="stat-card border-start border-end">
-                    <div class="stat-number"><?php echo $userCount; ?>+</div>
-                    <div class="stat-label">Active Users</div>
+                <div class="card border-0 shadow-sm text-center p-4" style="background-color: var(--bg-white); border-radius: 1.5rem;">
+                    <div class="mb-3">
+                        <img src="images/tree.png" alt="Trees Protected" style="width: 120px; height: 120px; object-fit: contain;">
+                    </div>
+                    <h5 class="fw-bold mb-2" style="font-family: var(--font-serif); color: var(--text-dark);">Trees Protected</h5>
+                    <p class="text-muted small mb-0">Less new paper means more number of trees saved.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-number"><?php echo $libraryCount; ?>+</div>
-                    <div class="stat-label">Partner Libraries</div>
+                <div class="card border-0 shadow-sm text-center p-4" style="background-color: var(--bg-white); border-radius: 1.5rem;">
+                    <div class="mb-3">
+                        <img src="images/circular-reading.png" alt="Circular Reading" style="width: 120px; height: 120px; object-fit: contain;">
+                    </div>
+                    <h5 class="fw-bold mb-2" style="font-family: var(--font-serif); color: var(--text-dark);">Circular Reading</h5>
+                    <p class="text-muted small mb-0">Keeping books out of landfills and in readers' hands.</p>
                 </div>
             </div>
         </div>
@@ -51,14 +83,14 @@ $libraryCount = $conn->query("SELECT COUNT(*) as count FROM libraries WHERE stat
 </section>
 
 <!-- Featured Books -->
-<section class="py-5 bg-communities">
+<section class="py-5 bg-eco-light">
     <div class="container">
         <div class="d-flex justify-content-between align-items-end mb-4">
             <div>
-                <h2 class="fw-bold mb-1">Featured Books</h2>
-                <p class="text-muted">Explore the latest additions to our community library.</p>
+                <h2 class="fw-bold mb-1 text-eco-dark">Recently Listed Books</h2>
+                <p class="text-eco-muted">Discover the latest additions to our eco-friendly community.</p>
             </div>
-            <a href="books.php" class="text-primary fw-bold text-decoration-none mb-2">View All <i class="bi bi-arrow-right"></i></a>
+            <a href="books.php" class="text-eco-primary fw-bold text-decoration-none mb-2">View All <i class="bi bi-arrow-right"></i></a>
         </div>
         
         <div class="row g-4">
@@ -93,24 +125,33 @@ $libraryCount = $conn->query("SELECT COUNT(*) as count FROM libraries WHERE stat
 </section>
 
 <!-- How it Works -->
-<section class="py-5 bg-white">
+<section class="py-5" style="background-color: var(--bg-cream);">
     <div class="container">
-        <h2 class="text-center fw-bold mb-5">How It Works</h2>
-        <div class="row g-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-2" style="font-family: var(--font-serif); color: var(--text-dark); font-size: 2rem;">
+                How It Works
+            </h2>
+        </div>
+        <div class="row g-5 justify-content-center">
             <div class="col-md-4 text-center">
-                <div class="feature-icon mx-auto"><i class="bi bi-search"></i></div>
-                <h4 class="fw-bold mb-3">Discover</h4>
-                <p class="text-muted text-center px-lg-4">Browse through thousands of books listed by our community members or partner libraries.</p>
+                <div class="mb-4">
+                    <img src="images/find-book.png" alt="Find a Book" style="width: 100px; height: 100px; object-fit: contain;">
+                </div>
+                <h5 class="fw-bold mb-3" style="font-family: var(--font-serif); color: var(--text-dark);">Find a Book</h5>
             </div>
             <div class="col-md-4 text-center">
-                <div class="feature-icon mx-auto"><i class="bi bi-arrow-left-right"></i></div>
-                <h4 class="fw-bold mb-3">Swap or Buy</h4>
-                <p class="text-muted text-center px-lg-4">Connect with other book lovers to swap titles you've read for something new, or buy at great prices.</p>
+                <div class="mb-4">
+                    <img src="images/swap-book.png" alt="Choose Buy, Swap, or Donate" style="width: 100px; height: 100px; object-fit: contain;">
+                </div>
+                <h5 class="fw-bold mb-3" style="font-family: var(--font-serif); color: var(--text-dark);">Choose Buy, Swap, or Donate</h5>
             </div>
             <div class="col-md-4 text-center">
-                <div class="feature-icon mx-auto"><i class="bi bi-people"></i></div>
-                <h4 class="fw-bold mb-3">Join the Club</h4>
-                <p class="text-muted text-center px-lg-4">Engage in discussions, write reviews, and share your reading journey in our vibrant community.</p>
+                <div class="mb-4">
+                    <div class="d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; margin: 0 auto; background-color: var(--primary-light); border-radius: 50%;">
+                        <i class="bi bi-book-half" style="font-size: 3rem; color: var(--primary-green);"></i>
+                    </div>
+                </div>
+                <h5 class="fw-bold mb-3" style="font-family: var(--font-serif); color: var(--text-dark);">Share the Story</h5>
             </div>
         </div>
     </div>

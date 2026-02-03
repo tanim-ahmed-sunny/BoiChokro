@@ -1,0 +1,170 @@
+/* Environmental Impact Styles */
+.impact-section {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    margin: 3rem 0;
+    border: 2px solid var(--border-soft);
+}
+
+.impact-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid var(--border-soft);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-soft);
+}
+
+.impact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-soft);
+}
+
+.impact-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.impact-label {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.impact-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: var(--primary-green);
+    font-size: 1.8rem;
+}
+
+/* Eco Badge Styles */
+.eco-badge {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border: 1px solid var(--primary-green);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.eco-badge i {
+    font-size: 1rem;
+}
+
+/* Soft Rounded Buttons */
+.btn-eco-primary {
+    background: var(--primary-green) !important;
+    color: white !important;
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px var(--shadow-soft);
+}
+
+.btn-eco-primary:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--shadow-soft);
+    color: white !important;
+}
+
+.btn-eco-secondary {
+    background: var(--secondary-beige) !important;
+    color: white !important;
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-eco-secondary:hover {
+    background: #B89558 !important;
+    transform: translateY(-2px);
+    color: white !important;
+}
+
+.btn-eco-outline {
+    background: white !important;
+    color: var(--primary-green) !important;
+    border: 2px solid var(--primary-green);
+    padding: 0.875rem 2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-eco-outline:hover {
+    background: var(--primary-green) !important;
+    color: white !important;
+    border-color: var(--primary-green);
+}
+
+/* Leaf Pattern Background */
+.leaf-pattern {
+    position: relative;
+    overflow: hidden;
+}
+
+.leaf-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background-image: radial-gradient(circle, var(--primary-light) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Eco-friendly text colors */
+.text-eco-primary {
+    color: var(--primary-green) !important;
+}
+
+.text-eco-dark {
+    color: var(--text-dark) !important;
+}
+
+.text-eco-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Background utilities */
+.bg-eco-cream {
+    background-color: var(--bg-cream) !important;
+}
+
+.bg-eco-light {
+    background-color: var(--bg-light) !important;
+}
+
+.bg-eco-primary-light {
+    background-color: var(--primary-light) !important;
+}
+
+.bg-eco-secondary-light {
+    background-color: var(--secondary-light) !important;
+}
