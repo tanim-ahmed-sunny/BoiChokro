@@ -1,11 +1,12 @@
  Boichokro (বইচক্র)
----Contributor:
-   Mahmudul Hasan Noman(22CSE001) 
-   Lazmi Rahman Ayman (22CSE004) 
-   Redwanul Haque Rafe (22CSE030) 
-   Tanim Ahmed (22CSE032) 
-   Amin Bhuiyan (22CSE046) 
-   Most. Maliha Akter (22CSE049)
+	
+-*Contributor:*
+- **Mahmudul Hasan Noman** (22CSE001)
+- **Lazmi Rahman Ayman** (22CSE004)
+- **Redwanul Haque Rafe** (22CSE030)
+- **Tanim Ahmed** (22CSE032)
+- **Amin Bhuiyan** (22CSE046)
+- **Most. Maliha Akter** (22CSE049)
 
    
 Read. Reuse. Reduce Waste.
