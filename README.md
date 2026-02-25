@@ -1,5 +1,13 @@
  Boichokro (বইচক্র)
+---Contributor:
+   Mahmudul Hasan Noman(22CSE001) 
+   Lazmi Rahman Ayman (22CSE004) 
+   Redwanul Haque Rafe (22CSE030) 
+   Tanim Ahmed (22CSE032) 
+   Amin Bhuiyan (22CSE046) 
+   Most. Maliha Akter (22CSE049)
 
+   
 Read. Reuse. Reduce Waste.
 
 Boichokro is a modern, eco-friendly web platform designed to give books a second life. By facilitating book swaps, sales, and donations, we aim to build a circular economy for knowledge while significantly reducing the environmental footprint of the publishing industry.
